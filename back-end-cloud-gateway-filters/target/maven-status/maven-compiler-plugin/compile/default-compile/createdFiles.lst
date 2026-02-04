@@ -1,0 +1,11 @@
+com/unir/gateway/config/MapperConfig.class
+com/unir/gateway/decorator/GetRequestDecorator.class
+com/unir/gateway/decorator/PatchRequestDecorator.class
+com/unir/gateway/GatewayAndFiltersApplication.class
+com/unir/gateway/utils/RequestBodyExtractor.class
+com/unir/gateway/decorator/DeleteRequestDecorator.class
+com/unir/gateway/decorator/RequestDecoratorFactory.class
+com/unir/gateway/decorator/PostRequestDecorator.class
+com/unir/gateway/decorator/PutRequestDecorator.class
+com/unir/gateway/model/GatewayRequest.class
+com/unir/gateway/filter/RequestTranslationFilter.class

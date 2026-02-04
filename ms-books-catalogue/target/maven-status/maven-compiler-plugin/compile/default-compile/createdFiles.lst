@@ -1,0 +1,9 @@
+com/unir/ms_books_catalogue/MsBooksCatalogueApplication.class
+com/unir/ms_books_catalogue/data/model/Book$BookBuilder.class
+com/unir/ms_books_catalogue/controller/BooksController.class
+com/unir/ms_books_catalogue/data/model/Book.class
+com/unir/ms_books_catalogue/service/BooksService.class
+com/unir/ms_books_catalogue/controller/model/BookAvailabilityRequest.class
+com/unir/ms_books_catalogue/data/BookRepository.class
+com/unir/ms_books_catalogue/controller/model/CreateBookRequest.class
+com/unir/ms_books_catalogue/service/BooksServiceImpl.class
