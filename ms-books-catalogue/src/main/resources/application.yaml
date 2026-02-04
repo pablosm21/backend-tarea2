@@ -16,7 +16,7 @@ spring:
 
 ## Configuración de instancia
 server:
-    port: 8088
+    port: ${PORT:8790}
 
 ## Configuración del cliente Eureka
 eureka:
