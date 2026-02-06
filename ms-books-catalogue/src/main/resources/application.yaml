@@ -4,15 +4,15 @@ spring:
         name: ms-books-catalogue
 
     datasource:
-        url: ${DB_URL:jdbc:mysql://localhost:3310/books_catalogue_db}
+        url: ${DB_URL:jdbc:mysql://localhost:3306/books_catalogue_db}
         driver-class-name: ${DB_DRIVER:com.mysql.cj.jdbc.Driver}
         username: ${DB_USER:root}
-        password: ${DB_PASSWORD:root}
+        password: ${DB_PASSWORD:12345678}
 
     jpa:
         show-sql: true
         hibernate:
-            ddl-auto: update
+            ddl-auto: validate
 
 ## Configuración de instancia
 server:
