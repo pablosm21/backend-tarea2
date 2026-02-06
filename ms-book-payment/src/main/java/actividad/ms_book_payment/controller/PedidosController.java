@@ -2,8 +2,10 @@ package actividad.ms_book_payment.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import actividad.ms_book_payment.controller.model.PedidoDto;
 import actividad.ms_book_payment.controller.model.PedidoRequest;
 import actividad.ms_book_payment.data.model.Pedido;
+import actividad.ms_book_payment.mapper.PedidoMapper;
 import actividad.ms_book_payment.service.PedidosService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class PedidosController {
 
     private final PedidosService service;
+    private final PedidoMapper mapper;
 
     /**
      * RQUEST ES
@@ -34,17 +37,18 @@ public class PedidosController {
      * }
      */
     @PostMapping("/pedidos")
-    public ResponseEntity<Pedido> crearPedido(@RequestBody @Valid PedidoRequest request) {
+    public ResponseEntity<PedidoDto> crearPedido(@RequestBody @Valid PedidoRequest request) {
 
         log.info("Recibido pedido para: {} con IDs: {}",
                 request.getComprador(),
                 request.getLibros());
 
-        // Aquí puedes llamar a tu servicio con los datos recibidos
+        // Aquí se llama al servicio con los datos recibidos
         Pedido pedido = service.crearPedido(request);
 
         if (pedido != null) {
-            return ResponseEntity.ok(pedido);
+            PedidoDto pedidoDto = mapper.toDto(pedido);
+            return ResponseEntity.ok(pedidoDto);
         } else {
             return ResponseEntity.badRequest().build();
         }
@@ -52,10 +56,14 @@ public class PedidosController {
     }
 
     @GetMapping("/pedidos")
-    public ResponseEntity<List<Pedido>> getPedidos() {
+    public ResponseEntity<List<PedidoDto>> getPedidos() {
         List<Pedido> pedidos = service.getPedidos();
+
         if (pedidos != null) {
-            return ResponseEntity.ok(pedidos);
+            List<PedidoDto> pedidosDto = pedidos.stream()
+                    .map(mapper::toDto)
+                    .toList();
+            return ResponseEntity.ok(pedidosDto);
         } else {
             return ResponseEntity.ok(Collections.emptyList());
         }
